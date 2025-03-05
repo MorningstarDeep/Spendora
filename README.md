@@ -1,3 +1,36 @@
+# Spendora - Personal Finance Manager
+
+Spendora is a web-based personal finance manager app built with React and Firebase, designed to help users track and manage their expenses. It provides features like adding expenses, viewing monthly expense summaries, and visualizing your spending with interactive graphs.
+
+## Features
+
+- **User Authentication**: Secure sign-up and login functionality using Firebase, with support for Google Sign-In.
+- **Expense Tracking**: Add and manage your expenses.
+- **Monthly Expense Summary**: View a breakdown of your expenses for the current month.
+- **Expense Visualization**: Interactive graph to visualize your monthly expenses.
+- **Firebase Backend**: All data is securely stored in Firebase.
+
+## Tech Stack
+
+- **Frontend**: React.js
+- **Backend**: Firebase (Authentication, Firestore for data storage)
+- **Graphing**: Chart.js (for visualizing expenses)
+  
+## Getting Started
+
+### Prerequisites
+
+Before you begin, ensure you have the following installed on your local machine:
+
+- **Node.js** (LTS version recommended): [Download Node.js](https://nodejs.org/)
+- **npm** (comes with Node.js)
+
+### Installation
+
+1. Clone this repository to your local machine:
+   ```bash
+   git clone https://github.com/your-username/spendora.git
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
