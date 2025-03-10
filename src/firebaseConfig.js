@@ -6,13 +6,13 @@ import { getFirestore } from "firebase/firestore";
 
 // Your web app's Firebase configuration (Use process.env without quotes)
 const firebaseConfig = {
-  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
-  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
-  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
-  storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
-  messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
-  appId: process.env.REACT_APP_FIREBASE_APP_ID,
-  measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID
+  apiKey: "AIzaSyAlK4CBJN_b-6j6ABIIRSL_DHnXbRnGyvw",
+  authDomain: "spendora-a3dc0.firebaseapp.com",
+  projectId: "spendora-a3dc0",
+  storageBucket: "spendora-a3dc0.firebasestorage.app",
+  messagingSenderId: "893430276543",
+  appId: "1:893430276543:web:38b09a21d8252777d6810a",
+  measurementId: "G-ZJK4XX8RSM"
 };
 
 

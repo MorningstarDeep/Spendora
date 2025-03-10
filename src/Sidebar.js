@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { FaBars, FaHome, FaChartBar, FaCog } from "react-icons/fa";
+import { FaBars, FaHome, FaChartBar, FaCog, FaBullseye } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 
 const Sidebar = () => {
@@ -27,6 +27,10 @@ const Sidebar = () => {
           <FaChartBar className="text-xl" />
           {isOpen && <span>Expenses</span>}
         </button>
+        <button onClick={() => navigate("/budget-goal")} className="flex items-center gap-4">
+          <FaBullseye className="text-xl" />
+          {isOpen && <span>Budget Goal</span>}
+        </button>
         <button onClick={() => navigate("/settings")} className="flex items-center gap-4">
           <FaCog className="text-xl" />
           {isOpen && <span>Settings</span>}
@@ -37,3 +41,4 @@ const Sidebar = () => {
 };
 
 export default Sidebar;
+
