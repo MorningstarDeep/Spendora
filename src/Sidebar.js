@@ -16,21 +16,23 @@ const Sidebar = () => {
       <button onClick={() => setIsOpen(!isOpen)} className="mb-6">
         <FaBars className="text-2xl" />
       </button>
-      
+
       {/* Sidebar Links */}
       <div className="flex flex-col gap-6">
         <button onClick={() => navigate("/dashboard")} className="flex items-center gap-4">
           <FaHome className="text-xl" />
           {isOpen && <span>Home</span>}
         </button>
-        <button onClick={() => navigate("/expenses")} className="flex items-center gap-4">
+
+        <button onClick={() => navigate("/budget-tracking")} className="flex items-center gap-4">
           <FaChartBar className="text-xl" />
-          {isOpen && <span>Expenses</span>}
+          {isOpen && <span>Budget Tracking</span>}
         </button>
         <button onClick={() => navigate("/budget-goal")} className="flex items-center gap-4">
           <FaBullseye className="text-xl" />
           {isOpen && <span>Budget Goal</span>}
         </button>
+
         <button onClick={() => navigate("/settings")} className="flex items-center gap-4">
           <FaCog className="text-xl" />
           {isOpen && <span>Settings</span>}
@@ -41,4 +43,3 @@ const Sidebar = () => {
 };
 
 export default Sidebar;
-

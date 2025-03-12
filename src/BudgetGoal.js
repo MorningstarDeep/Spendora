@@ -1,20 +1,15 @@
 import React from "react";
-import SavingsGoalForm from "./components/SavingsGoalForm"; // Import the form
-import SavingsGoalsList from "./components/SavingsGoalsList"; // Import the list
+import SavingsGoalForm from "./components/SavingsGoalForm"; 
+import SavingsGoalsList from "./components/SavingsGoalsList"; 
 
 const BudgetGoal = () => {
   return (
-    <div className="container mx-auto p-6">
-      <h1 className="text-2xl font-bold mb-4">Budget Goal</h1>
-      
-      {/* Form to Add Savings Goal */}
-      <SavingsGoalForm />  
-
-      {/* List of Saved Goals */}
-      <SavingsGoalsList />  
+    <div className="flex-1 p-6 bg-gray-100">
+      <h1 className="text-3xl font-bold">Budget Goal</h1>
+      <SavingsGoalForm />
+      <SavingsGoalsList />
     </div>
   );
 };
 
 export default BudgetGoal;
-
