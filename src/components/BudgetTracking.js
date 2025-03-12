@@ -2,74 +2,75 @@ import React, { useState } from "react";
 
 const BudgetTracking = () => {
   const [expenses, setExpenses] = useState([]);
-  const [category, setCategory] = useState("");
   const [amount, setAmount] = useState("");
-  const [filterCategory, setFilterCategory] = useState("");
-  const [totalSpending, setTotalSpending] = useState(0);
+  const [category, setCategory] = useState("");
+  const [date, setDate] = useState("");
 
   const addExpense = () => {
-    const newExpense = { category, amount: parseFloat(amount) };
-    const updatedExpenses = [...expenses, newExpense];
-    setExpenses(updatedExpenses);
-    setTotalSpending(updatedExpenses.reduce((sum, exp) => sum + exp.amount, 0));
-    setCategory("");
+    if (!amount || !category || !date) return;
+    setExpenses([...expenses, { amount: Number(amount), category, date }]);
     setAmount("");
+    setCategory("");
+    setDate("");
   };
 
-  const filteredExpenses = filterCategory
-    ? expenses.filter((expense) => expense.category === filterCategory)
-    : expenses;
-
   return (
-    <div className="p-6 bg-white shadow-md rounded-lg">
-      <h2 className="text-2xl font-bold mb-4">Budget Tracking</h2>
+    <div className="flex-1 p-6 bg-gradient-to-r from-green-400 to-green-300 rounded-lg shadow-lg text-white">
+      <h1 className="text-4xl font-bold mb-6 text-center">💰 Budget Tracking</h1>
 
-      {/* Expense Input Fields */}
-      <div className="flex gap-4 mb-4">
-        <input
-          type="text"
-          placeholder="Category"
-          value={category}
-          onChange={(e) => setCategory(e.target.value)}
-          className="border p-2 rounded w-1/4"
-        />
+      {/* Input Section */}
+      <div className="flex gap-4 mb-6">
         <input
           type="number"
-          placeholder="Amount"
+          placeholder="Enter amount"
           value={amount}
           onChange={(e) => setAmount(e.target.value)}
-          className="border p-2 rounded w-1/4"
+          className="w-full p-3 rounded-md shadow-md text-black"
         />
-        <button onClick={addExpense} className="bg-blue-500 text-white px-4 py-2 rounded">
-          Add Expense
+        <input
+          type="text"
+          placeholder="Enter category"
+          value={category}
+          onChange={(e) => setCategory(e.target.value)}
+          className="w-full p-3 rounded-md shadow-md text-black"
+        />
+        <input
+          type="date"
+          value={date}
+          onChange={(e) => setDate(e.target.value)}
+          className="w-full p-3 rounded-md shadow-md text-black"
+        />
+        <button
+          className="bg-green-600 hover:bg-green-700 text-white p-3 rounded-md"
+          onClick={addExpense}
+        >
+          ➕ Add Expense
         </button>
       </div>
 
-      {/* Filter Section */}
-      <div className="flex gap-4 mb-4">
-        <input
-          type="text"
-          placeholder="Filter by Category"
-          value={filterCategory}
-          onChange={(e) => setFilterCategory(e.target.value)}
-          className="border p-2 rounded w-1/4"
-        />
+      {/* Total Expenses Display */}
+      <div className="bg-white text-black p-4 rounded-md shadow-md">
+        <h2 className="text-2xl font-bold">Total Expenses:</h2>
+        <p className="text-3xl">₹{expenses.reduce((sum, exp) => sum + exp.amount, 0)}</p>
       </div>
 
-      {/* Expenses List */}
-      <ul className="mb-4">
-        {filteredExpenses.map((expense, index) => (
-          <li key={index} className="border-b py-2">
-            {expense.category} - ${expense.amount.toFixed(2)}
-          </li>
-        ))}
-      </ul>
-
-      {/* Total Spending Display */}
-      <h3 className="text-lg font-bold">Total Spending: ${totalSpending.toFixed(2)}</h3>
+      {/* Expense List */}
+      <div className="mt-6 bg-white text-black p-4 rounded-md shadow-md">
+        <h2 className="text-xl font-bold mb-4">Expense List:</h2>
+        {expenses.length === 0 ? (
+          <p className="text-gray-500">No expenses added yet.</p>
+        ) : (
+          <ul className="space-y-2">
+            {expenses.map((exp, index) => (
+              <li key={index} className="border-b pb-2">
+                <strong>₹{exp.amount}</strong> - {exp.category} - {exp.date}
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
     </div>
   );
 };
 
 export default BudgetTracking;
-
