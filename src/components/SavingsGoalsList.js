@@ -1,37 +1,35 @@
-import { useEffect, useState } from "react";
-import { db, auth } from "../firebaseConfig";  
-import { collection, query, where, onSnapshot } from "firebase/firestore";
+import React from "react";
 
-const SavingsGoalsList = () => {
-  const [goals, setGoals] = useState([]);
-
-  useEffect(() => {
-    const user = auth.currentUser;
-    if (!user) return;
-
-    const q = query(collection(db, "savings_goals"), where("userId", "==", user.uid));
-    const unsubscribe = onSnapshot(q, (snapshot) => {
-      const goalsData = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
-      setGoals(goalsData);
-    });
-
-    return () => unsubscribe();
-  }, []);
-
+const SavingsGoalsList = ({ goals = [] }) => {
   return (
-    <div>
-      <h2>My Savings Goals</h2>
-      {goals.map((goal) => (
-        <div key={goal.id} className="goal-card">
-          <h3>{goal.goalName}</h3>
-          <p>Target: ${goal.targetAmount}</p>
-          <p>Saved: ${goal.currentAmount}</p>
-          <p>Due Date: {goal.dueDate}</p>
-          <progress value={goal.currentAmount} max={goal.targetAmount}></progress>
-        </div>
-      ))}
+    <div className="flex flex-col gap-4">
+      {goals.length === 0 ? (
+        <p className="text-center text-gray-500">No goals added yet.</p>
+      ) : (
+        goals.map((goal, index) => (
+          <div
+            key={index}
+            className="bg-blue-100 text-black p-4 rounded-md shadow-md flex justify-between items-center"
+          >
+            <div>
+              <h3 className="text-xl font-bold">{goal.goal}</h3>
+              <p className="text-sm">Target: ₹{goal.amount}</p>
+              <p className="text-sm">Deadline: {goal.date}</p>
+            </div>
+
+            {/* Progress Bar */}
+            <div className="w-24 h-2 bg-gray-300 rounded-full overflow-hidden">
+              <div
+                className="bg-blue-600 h-full"
+                style={{ width: `${Math.min((goal.amount / 1000) * 100, 100)}%` }}
+              ></div>
+            </div>
+          </div>
+        ))
+      )}
     </div>
   );
 };
 
 export default SavingsGoalsList;
+

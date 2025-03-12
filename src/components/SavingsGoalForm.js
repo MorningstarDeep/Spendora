@@ -1,60 +1,51 @@
-import { useState } from "react";
-import { db, auth } from "../firebaseConfig";  
-import { collection, addDoc, serverTimestamp } from "firebase/firestore";
+import React, { useState } from "react";
 
-const SavingsGoalForm = () => {
-  const [goalName, setGoalName] = useState("");
-  const [targetAmount, setTargetAmount] = useState("");
-  const [dueDate, setDueDate] = useState("");
+const SavingsGoalForm = ({ addGoal }) => {
+  const [title, setTitle] = useState("");
+  const [amount, setAmount] = useState("");
+  const [deadline, setDeadline] = useState("");
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    const user = auth.currentUser;
-    if (!user) return alert("Please log in to set a goal");
-
-    try {
-      await addDoc(collection(db, "savings_goals"), {
-        userId: user.uid,
-        goalName,
-        targetAmount: Number(targetAmount),
-        currentAmount: 0,
-        dueDate,
-        createdAt: serverTimestamp(),
-      });
-      setGoalName("");
-      setTargetAmount("");
-      setDueDate("");
-      alert("Goal Added Successfully!");
-    } catch (error) {
-      console.error("Error adding goal: ", error);
-    }
+    if (!title || !amount || !deadline) return;
+    
+    addGoal({ title, amount, deadline }); // ✅ Ensures deadline is passed
+    setTitle("");
+    setAmount("");
+    setDeadline("");
   };
 
   return (
-    <form onSubmit={handleSubmit} className="goal-form">
+    <form onSubmit={handleSubmit} className="flex flex-col gap-4">
       <input
         type="text"
         placeholder="Goal Name"
-        value={goalName}
-        onChange={(e) => setGoalName(e.target.value)}
-        required
+        value={title}
+        onChange={(e) => setTitle(e.target.value)}
+        className="p-3 rounded-md text-black"
       />
       <input
         type="number"
         placeholder="Target Amount"
-        value={targetAmount}
-        onChange={(e) => setTargetAmount(e.target.value)}
-        required
+        value={amount}
+        onChange={(e) => setAmount(e.target.value)}
+        className="p-3 rounded-md text-black"
       />
       <input
         type="date"
-        value={dueDate}
-        onChange={(e) => setDueDate(e.target.value)}
-        required
+        value={deadline}
+        onChange={(e) => setDeadline(e.target.value)}
+        className="p-3 rounded-md text-black"
       />
-      <button type="submit">Add Goal</button>
+      <button
+        type="submit"
+        className="bg-blue-600 hover:bg-blue-700 text-white p-3 rounded-md"
+      >
+        ➕ Add Goal
+      </button>
     </form>
   );
 };
 
 export default SavingsGoalForm;
+

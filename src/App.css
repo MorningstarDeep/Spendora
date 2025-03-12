@@ -1,113 +1,18 @@
-/* === General Body Styling === */
 body {
-  margin: 0;
-  font-family: 'Poppins', sans-serif;
   background-color: #f0f2f5;
-  color: #333;
+  font-family: "Poppins", sans-serif;
 }
 
-/* === Main App Container === */
-.App {
-  display: flex;
-  height: 100vh;
-  background: linear-gradient(135deg, #e0f7fa, #80deea);
+h1, h3 {
+  font-weight: 700;
 }
 
-/* === Sidebar Styling === */
-.sidebar {
-  background-color: #1e3a8a;
-  color: #fff;
-  width: 250px;
-  padding: 20px;
-  border-top-right-radius: 20px;
-  border-bottom-right-radius: 20px;
-  box-shadow: 4px 0 15px rgba(0, 0, 0, 0.2);
-}
-
-.sidebar button {
-  background: transparent;
-  border: none;
-  color: #fff;
-  padding: 10px 0;
-  width: 100%;
-  text-align: left;
-  cursor: pointer;
-  font-weight: bold;
-  transition: background 0.3s ease;
-}
-
-.sidebar button:hover {
-  background-color: #3b82f6;
-  border-radius: 8px;
-}
-
-/* === Budget Goal Section === */
-.budget-goal {
-  background: linear-gradient(135deg, #a8e063, #56ab2f);
-  color: #fff;
-  padding: 20px;
-  border-radius: 15px;
-  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
-}
-
-/* === Budget Tracking Section === */
-.budget-tracking {
-  background: linear-gradient(135deg, #4facfe, #00f2fe);
-  color: #fff;
-  padding: 20px;
-  border-radius: 15px;
-  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
-}
-
-/* === Input and Button Styling === */
 input, button {
-  width: 100%;
-  padding: 12px;
-  margin: 8px 0;
-  border: none;
-  border-radius: 8px;
-  outline: none;
-}
-
-input {
-  background-color: #f9f9f9;
-  border: 2px solid #ddd;
-}
-
-button {
-  background-color: #4CAF50;
-  color: #fff;
-  cursor: pointer;
-  transition: background 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 button:hover {
-  background-color: #45a049;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
-/* === Total Expenses Display === */
-.total-expenses {
-  background-color: #333;
-  color: #fff;
-  padding: 10px;
-  border-radius: 8px;
-  text-align: center;
-  font-weight: bold;
-}
-
-/* === Progress Bar === */
-.progress-bar {
-  background-color: #ddd;
-  border-radius: 8px;
-  height: 15px;
-  width: 100%;
-  position: relative;
-  overflow: hidden;
-}
-
-.progress-bar-fill {
-  background-color: #4CAF50;
-  height: 100%;
-  border-radius: 8px;
-  transition: width 0.4s ease-in-out;
-}
