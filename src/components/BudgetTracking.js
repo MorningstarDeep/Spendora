@@ -53,24 +53,10 @@ const BudgetTracking = () => {
         <h2 className="text-2xl font-bold">Total Expenses:</h2>
         <p className="text-3xl">₹{expenses.reduce((sum, exp) => sum + exp.amount, 0)}</p>
       </div>
-
-      {/* Expense List */}
-      <div className="mt-6 bg-white text-black p-4 rounded-md shadow-md">
-        <h2 className="text-xl font-bold mb-4">Expense List:</h2>
-        {expenses.length === 0 ? (
-          <p className="text-gray-500">No expenses added yet.</p>
-        ) : (
-          <ul className="space-y-2">
-            {expenses.map((exp, index) => (
-              <li key={index} className="border-b pb-2">
-                <strong>₹{exp.amount}</strong> - {exp.category} - {exp.date}
-              </li>
-            ))}
-          </ul>
-        )}
-      </div>
     </div>
   );
 };
 
 export default BudgetTracking;
+
+
